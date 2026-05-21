@@ -8,12 +8,7 @@ This directory documents a minimal reproducible workflow from the IJSEM website 
 3. Use an LLM to extract structured microbial information from Markdown
 4. Merge per-article JSON outputs into a unified CSV table
 
-This public workflow corresponds to the data-extraction part of our study. The focus here is a reproducible collection and structured-extraction pipeline rather than the final cross-source integrated database.
-
-In other words:
-
-- this directory is designed to reproduce web crawling, article-to-Markdown conversion, LLM-based structured extraction, and JSON merging
-- it is not the final cross-source merged database workflow
+This public workflow corresponds to the data-extraction part of our study. 
 
 ## What This Part Does
 
@@ -34,23 +29,11 @@ The extracted information retained in this workflow includes:
 - temperature information: minimum, optimum, and maximum growth temperatures, plus evidence text
 - extraction quality label: confidence
 
-The public file [data/ijsem_llm_extracted_microbe_records.csv] represents a broader internal extraction result. In addition to temperature, it also includes fields such as `pH`, `NaCl`, oxygen preference, Gram stain, morphology, motility, spore formation, pigmentation, and molecular accession identifiers. Therefore, the `03/04` scripts in this directory should be understood as the minimal reproducible core workflow, whereas the public data table reflects the fuller scope of our actual extraction work.
-
+The public file [data/ijsem_llm_extracted_microbe_records.csv] represents a broader internal extraction result. In addition to temperature, it also includes fields such as `pH`, `NaCl`, oxygen preference, Gram stain, morphology, motility, spore formation, pigmentation, and molecular accession identifiers.
 
 ## Environment Setup
 
 We recommend using an isolated Python environment.
-
-Windows PowerShell:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r web\requirements-web.txt
-playwright install chromium
-```
-
-Linux / macOS:
 
 ```bash
 python -m venv .venv
@@ -295,7 +278,7 @@ we recommend checking the following outputs:
 
 ## Notes
 
-- the scripts in this directory provide the minimal public workflow that others can reproduce
-- This directory already covers the full public workflow from website crawling to minimal LLM-based structured extraction，and `data/ijsem_llm_extracted_microbe_records.csv` represents the fuller release of our actual extraction work.
+- the scripts in this directory provide the minimal public workflow
+- This directory already covers the full public workflow from website crawling to minimal LLM-based structured extraction，and `data/ijsem_llm_extracted_microbe_records.csv` represents the result of above extraction work.
 - The complete Supplementary Table 1 was derived from `data/ijsem_llm_extracted_microbe_records.csv` through temperature standardization, outlier filtering, cross-source deduplication, and conflict resolution.
 
